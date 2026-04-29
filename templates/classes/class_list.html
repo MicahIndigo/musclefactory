@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Available Classes</h2>
+
+{% for class in classes %}
+    <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+        <h3>{{ class.name }}</h3>
+        <p> {{ class.description }}</p>
+        <p><strong>Date:</strong> {{ class.date }}</p>
+        <p><strong>Capacity</strong> {{ class.capacity }}</p>
+    </div>
+{% empty %}
+    <p>No classes available.</p>
+{% endfor %}
+
+{% endblock %}

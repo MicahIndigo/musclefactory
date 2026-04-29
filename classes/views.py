@@ -1,3 +1,7 @@
 from django.shortcuts import render
+from .models import GymClass
 
-# Create your views here.
+
+def class_list(request):
+    classes = GymClass.objects.all()
+    return render(request, 'classes/class_list.html', {'classes': classes})
