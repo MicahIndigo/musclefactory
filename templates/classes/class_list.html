@@ -9,25 +9,37 @@
 {% endif %}
 
 {% for class in classes %}
-    <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
-        <h3>{{ class.name }}</h3>
-        <p> {{ class.description }}</p>
-        <p><strong>Date:</strong> {{ class.date }}</p>
-        <p><strong>Capacity:</strong> {{ class.capacity }}</p>
+    <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">{{ class.name }}</h5>
+            <p class="card-text">{{ class.description }}</p>
 
-        {% if user.is_authenticated %}
-            {% if user.profile.is_member %}
-               <a href="/classes/book/{{ class.id }}/" class="btn btn-success  btn-sm">
-                Book Class
-               </a>
+            <p class="mb-1">
+                <strong>Date:</strong> {{ class.date }}
+            </p>
+
+            <p class="mb-3">
+                <strong>Capacity:</strong> {{ class.capacity }}
+            </p>
+
+            {% if usere.is_authenticated %}
+
+                {% if user.profile.is_member %}
+                    <a href="/classes/book/{{ class.id }}/" class="btn btn-success btn-sm">
+                        Book Class
+                    </a>
+                {% else %}
+                    <a href="/checkout/buy/" class="btn btn-warning btn-sm">
+                        Upgrade to Membership
+                    </a>
+                (% endif %)
             {% else %}
-               <a href="/checkout/buy/" class="btn btn-warning btn-sm">
-                Upgrade to Membership
-               </a>
+                <a href="/accounts/login/" class="btn btn-secondary btn-sm">
+                    Login to Book
+                </a>
             {% endif %}
-        {% else %}
-            <p><a href="/accounts/login/">Login to book</a></p>
-        {% endif %}
+
+        </div>
     </div>
 {% empty %}
     <p>No classes available.</p>

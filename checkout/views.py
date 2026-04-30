@@ -1,8 +1,9 @@
-import stripe
+import stripe, json
 from django.conf import settings
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import HttpResponse
 from profiles.models import Profile
 
 stripe.api_key = settings.STRIPE_SECRET_KEY

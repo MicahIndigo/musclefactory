@@ -5,9 +5,12 @@
 
 {% if bookings %}
     {% for booking in bookings %}
-        <div style="border:1px solid 3ccc; padding:10px; margin-bottom:10px;">
-            <h3>{{ booking.gym_class.name }}</h3>
-            <p><strong>Date:</strong> {{ booking.gym_class.date }}</p>
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">{{ booking.gym_class.name }}</h5>
+                <p>{{ booking.gym_class.description }}</p>
+                <p><strong>Date:</strong> {{ booking.gym_class.date }}</p>
+            </div>
         </div>
     {% endfor %}
 {% else %}
