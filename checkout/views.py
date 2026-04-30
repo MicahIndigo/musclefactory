@@ -25,8 +25,8 @@ def create_checkout_session(request):
         mode='payment',
 
         # Success and cancel URLS (local server)
-        success_url='http://127.0.0.1:8000/checkout/success?session_id={CHECKOUT_SESSION_ID}',
-        cancel_url='http://127.0.0.1:8000/classes/',
+        success_url='https://musclefactory.onrender.com/checkout/success?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url='https://musclefactory.onrender.com/classes/',
     )
 
 
