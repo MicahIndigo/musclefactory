@@ -24,14 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    'django-insecure--65k7re)zaidbq&xvpwv%$70e*!c&n%aec*gx#jl*i56w41%#p'
-)
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["https://musclefactory.onrender.com"]
+ALLOWED_HOSTS = ["musclefactory.onrender.com"]
+
+CSRF_TRUSTED_ORIGINS = ["https://musclefactory.onrender.com"]
 
 
 # Application definition
