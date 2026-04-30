@@ -36,3 +36,10 @@ def book_class(request, class_id):
     
     messages.success(request, f"You have successfully booked {gym_class.name}!")
     return redirect('class_list')
+
+
+@login_required
+def my_bookings(request):
+    bookings = Booking.objects.filter(user=request.user)
+
+    return render(request, 'classes/my_bookings.html', {'bookings': bookings})
