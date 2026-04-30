@@ -2,6 +2,11 @@
 
 {% block content %}
 <h2>Available Classes</h2>
+{% if not user.profile.is_member %}
+  <a href="/checkout/buy/" class="btn btn-primary mb-3">
+    Buy Membership (£15)
+  </a>
+{% endif %}
 
 {% for class in classes %}
     <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
@@ -12,7 +17,9 @@
 
         {% if user.is_authenticated %}
             {% if user.profile.is_member %}
-               <a href="{% url 'book_class' class.id %}">Book Class</a>
+               <a href="/classes/book/{{ class.id }}/" class="btn btn-success  btn-sm">
+                Book Class
+               </a>
             {% else %}
                <p>You must purchase membership to book classes</p>
             {% endif %}

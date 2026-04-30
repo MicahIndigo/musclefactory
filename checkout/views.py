@@ -2,6 +2,7 @@ import stripe
 from django.conf import settings
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from profiles.models import Profile
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -23,7 +24,7 @@ def create_checkout_session(request):
         mode='payment',
 
         # Success and cancel URLS (local server)
-        success_url='http://127.0.0.1:8000/checkout/success/',
+        success_url='http://127.0.0.1:8000/checkout/success?session_id={CHECKOUT_SESSION_ID}',
         cancel_url='http://127.0.0.1:8000/classes/',
     )
 
@@ -37,4 +38,4 @@ def checkout_success(request):
     profile.is_member = True
     profile.save()
 
-    return render(request, 'checkout/success.html')
+    return redirect('class_list')
