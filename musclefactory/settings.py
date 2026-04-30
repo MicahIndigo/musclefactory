@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'accounts',
     'classes',
     'checkout',
-    'profiles',
+    'profiles.apps.ProfilesConfig',
 ]
 
 MIDDLEWARE = [
